@@ -1,0 +1,4 @@
+题型,课程,题干,选项A,选项B,选项C,选项D,参考答案,分值,难度,解析
+单选题,C++ 程序设计,在 Qt 中用于 TCP 客户端通信的类是？,QTcpSocket,QUdpSocket,QFile,QTimer,A,5,简单,QTcpSocket 用于 TCP 客户端通信。
+多选题,C++ 程序设计,下列哪些属于 Qt 网络相关类？,QTcpSocket,QTcpServer,QSqlQuery,QNetworkAccessManager,"A,B,D",8,中等,QTcpSocket 和 QTcpServer 属于 TCP 通信，QNetworkAccessManager 属于网络访问。
+简答题,软件工程,简述多教师阅卷时答卷锁定机制的作用。,,,,,防止重复批阅,15,中等,从 status、grader_id、locked_at 三个字段说明。

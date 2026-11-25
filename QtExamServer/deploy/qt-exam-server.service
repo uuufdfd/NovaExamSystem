@@ -1,0 +1,17 @@
+[Unit]
+Description=Qt Exam Server
+After=network-online.target mysql.service
+Wants=network-online.target mysql.service
+
+[Service]
+Type=simple
+User=qt-exam
+Group=qt-exam
+WorkingDirectory=/opt/qt-exam-server
+EnvironmentFile=/etc/qt-exam-server.env
+ExecStart=/opt/qt-exam-server/QtExamServer --host 0.0.0.0 --port 9000 --db-driver mysql --mysql-host ${QT_EXAM_DB_HOST} --mysql-port ${QT_EXAM_DB_PORT} --mysql-db ${QT_EXAM_DB_NAME} --mysql-user ${QT_EXAM_DB_USER}
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,743 @@
+/* ============================================================================
+   新星考试管理系统 · 答辩版统一主题 (Defense Theme)
+   ----------------------------------------------------------------------------
+   设计语言：超星式教育平台结构 + 极简留白 + 蓝白科技风 + 答辩正式感。
+   - 主色：#2563EB / #1D4ED8 / #1E40AF（蓝）
+   - 文字：#0F172A 标题 · #334155 正文 · #64748B 次要
+   - 背景：#F5F7FB 应用底 · #FFFFFF 卡片
+   - 描边：#E5EAF2 卡片 · #CBD5E1 输入框
+   单一来源：本文件整体替换历次叠加的主题块，统一所有控件观感。
+   仅视觉样式，不含任何业务逻辑；按 objectName 精准命中现有控件。
+   ============================================================================ */
+
+/* ---------- 全局基线 ---------- */
+QWidget, QMainWindow, QDialog {
+    font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC",
+                 "WenQuanYi Micro Hei", "Segoe UI", "Sans Serif";
+    font-size: 13px;
+    color: #1F2937;
+    background: #F5F7FB;
+}
+
+QWidget#appRoot, QWidget#mainArea, QWidget#examInfoColumn {
+    background: #F5F7FB;
+}
+
+/* ============================================================
+   左侧导航：深蓝渐变 + 蓝色选中态（教育平台风）
+   ============================================================ */
+QWidget#sidebar {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #17376B, stop:0.55 #122C56, stop:1 #0E2244);
+}
+
+QLabel#brandLogo {
+    border-radius: 10px;
+    border: 1px solid #d8e7ff;
+    background: #ffffff;
+}
+
+QLabel#brand {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    background: transparent;
+}
+
+QLabel#brand span {
+    color: #9DB5DA;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+QLabel#accountBox, QLabel#serverCard {
+    padding: 13px 14px;
+    border-radius: 10px;
+    color: #EAF1FF;
+    border: 1px solid #2C4E84;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+QLabel#accountBox span, QLabel#serverCard span {
+    color: #9DB5DA;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+QPushButton#navButton {
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding-left: 16px;
+    color: #C5D4EC;
+    text-align: left;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+QPushButton#navButton:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+QPushButton#navButton:checked {
+    color: #ffffff;
+    border-color: #3B82F6;
+    background: #2563EB;
+}
+
+/* ============================================================
+   页头：大标题 + 眉标 + 角色徽章
+   ============================================================ */
+QLabel#eyebrow {
+    color: #64748B;
+    font-size: 12px;
+    font-weight: 700;
+    background: transparent;
+}
+
+QLabel#pageTitle {
+    color: #0F172A;
+    font-size: 24px;
+    font-weight: 800;
+    background: transparent;
+}
+
+QLabel#currentRoleBadge {
+    border-radius: 9px;
+    padding: 8px 14px;
+    color: #1D4ED8;
+    background: #EAF1FE;
+    border: 1px solid #BFD6FB;
+    font-weight: 700;
+}
+
+/* ============================================================
+   卡片：白底、细描边、轻圆角、留白舒展（极简留白）
+   ============================================================ */
+QFrame#card, QFrame#paperCard, QFrame#sidePanelCard,
+QFrame#gradingPaperCard, QFrame#activityCard,
+QFrame#dashboardHero, QFrame#metricCard,
+QFrame#gradeActionPanel {
+    border: 1px solid #E5EAF2;
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+QFrame#card:hover, QFrame#activityCard:hover {
+    border-color: #D5E1F2;
+}
+
+QFrame#dashboardHero {
+    border: 1px solid #CFE0F8;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #FFFFFF, stop:1 #EEF5FF);
+}
+
+/* 指标卡：数值大、标题次、左侧彩色色块（按 accent 区分） */
+QFrame#metricCard:hover {
+    border-color: #C3D8F6;
+    background: #FBFDFF;
+}
+
+QLabel#metricMark {
+    border-radius: 10px;
+    background: #E3EEFF;
+}
+
+QLabel#metricMark[accent="blue"]   { background: #DCE9FF; }
+QLabel#metricMark[accent="cyan"]   { background: #DCF3FB; }
+QLabel#metricMark[accent="amber"]  { background: #FEF1CF; }
+QLabel#metricMark[accent="green"]  { background: #D8F5E3; }
+QLabel#metricMark[accent="red"]    { background: #FEE2E2; }
+QLabel#metricMark[accent="crimson"]{ background: #FECACA; }
+
+QLabel#metricValue {
+    color: #0F172A;
+    font-size: 26px;
+    font-weight: 800;
+    background: transparent;
+}
+
+QLabel#metricTitle {
+    color: #64748B;
+    font-size: 13px;
+    font-weight: 700;
+    background: transparent;
+}
+
+/* ---------- 分组标题 / 次要文字 ---------- */
+QLabel#sectionTitle, QLabel#sectionTitle h3, QLabel#sectionTitle p,
+QLabel#mutedLabel, QLabel#fieldLabel {
+    background: transparent;
+}
+
+QLabel#sectionTitle h3 {
+    margin: 0;
+    color: #0F172A;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+QLabel#sectionTitle p, QLabel#mutedLabel {
+    color: #64748B;
+    font-size: 13px;
+}
+
+QLabel#fieldLabel, QLabel#choiceHint {
+    color: #64748B;
+    font-weight: 700;
+    background: transparent;
+}
+
+/* ============================================================
+   输入控件：统一圆角、舒适高度、蓝色聚焦描边
+   ============================================================ */
+QLineEdit, QTextEdit, QPlainTextEdit, QComboBox,
+QSpinBox, QDoubleSpinBox, QDateTimeEdit {
+    min-height: 38px;
+    border: 1px solid #CBD5E1;
+    border-radius: 9px;
+    padding: 6px 12px;
+    color: #1F2937;
+    background: #FFFFFF;
+    selection-background-color: #2563EB;
+    selection-color: #FFFFFF;
+}
+
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus,
+QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateTimeEdit:focus {
+    border: 1px solid #2563EB;
+    background: #FBFDFF;
+}
+
+QLineEdit:disabled, QTextEdit:disabled, QPlainTextEdit:disabled,
+QComboBox:disabled, QSpinBox:disabled, QDoubleSpinBox:disabled, QDateTimeEdit:disabled {
+    color: #94A3B8;
+    background: #EFF2F7;
+    border-color: #E2E8F0;
+}
+
+QComboBox::drop-down, QDateTimeEdit::drop-down {
+    width: 26px;
+    border: none;
+    background: transparent;
+}
+
+QSpinBox::up-button, QSpinBox::down-button,
+QDoubleSpinBox::up-button, QDoubleSpinBox::down-button {
+    width: 0;
+    height: 0;
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #E5EAF2;
+    border-radius: 9px;
+    padding: 4px;
+    background: #FFFFFF;
+    selection-background-color: #EAF1FE;
+    selection-color: #1D4ED8;
+}
+
+/* 代码作答框：等宽字体、浅蓝底（学生程序题） */
+QTextEdit#codeAnswerEdit {
+    border: 1px solid #BFD6FB;
+    background: #F7FBFF;
+    color: #1F2937;
+    font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+    font-size: 13px;
+}
+
+/* ============================================================
+   按钮体系：默认次按钮 / 主按钮(蓝) / 提交(绿) / 危险(红) / 轻提示
+   ============================================================ */
+QPushButton {
+    min-height: 38px;
+    border: 1px solid #CBD5E1;
+    border-radius: 9px;
+    padding: 6px 16px;
+    color: #334155;
+    background: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+QPushButton:hover {
+    border-color: #93B5E8;
+    background: #F4F8FE;
+}
+
+QPushButton:pressed {
+    background: #E8EFF9;
+}
+
+QPushButton:disabled {
+    color: #9AA6B6;
+    border-color: #E2E8F0;
+    background: #EFF2F7;
+}
+
+/* 主按钮：创建 / 导入 / 发布 / 刷新数据 */
+QPushButton#primaryButton, QPushButton#primaryBigButton {
+    color: #FFFFFF;
+    border-color: #2563EB;
+    background: #2563EB;
+}
+
+QPushButton#primaryButton:hover, QPushButton#primaryBigButton:hover {
+    border-color: #1D4ED8;
+    background: #1D4ED8;
+}
+
+QPushButton#primaryButton:pressed, QPushButton#primaryBigButton:pressed {
+    background: #1E40AF;
+}
+
+/* 提交 / 通过：克制的确定绿 */
+QPushButton#successBigButton {
+    color: #FFFFFF;
+    border-color: #16A34A;
+    background: #16A34A;
+}
+
+QPushButton#successBigButton:hover {
+    border-color: #15803D;
+    background: #15803D;
+}
+
+/* 答题/批阅主操作的大按钮：更高更醒目 */
+QPushButton#primaryBigButton, QPushButton#successBigButton {
+    min-height: 46px;
+    min-width: 150px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+QPushButton#primaryBigButton:disabled, QPushButton#successBigButton:disabled {
+    color: #9AA6B6;
+    border-color: #E2E8F0;
+    background: #EFF2F7;
+}
+
+/* 轻提示按钮：浅蓝底蓝字（模拟监考等次要动作） */
+QPushButton#quietButton {
+    color: #1D4ED8;
+    border-color: #BFD6FB;
+    background: #EAF1FE;
+}
+
+QPushButton#quietButton:hover {
+    border-color: #2563EB;
+    background: #DCE9FF;
+}
+
+/* 次按钮：刷新 / 检测重复 / 重置筛选（保持白底克制） */
+QPushButton#secondaryButton {
+    color: #334155;
+    border-color: #CBD5E1;
+    background: #FFFFFF;
+}
+
+/* 危险按钮：删除 / 关闭考试 */
+QPushButton#dangerOutlineButton {
+    color: #DC2626;
+    border-color: #FBC9CD;
+    background: #FFF6F6;
+}
+
+QPushButton#dangerOutlineButton:hover,
+QPushButton#dangerButton {
+    color: #FFFFFF;
+    border-color: #DC2626;
+    background: #DC2626;
+}
+
+QPushButton#dangerButton:hover {
+    border-color: #B91C1C;
+    background: #B91C1C;
+}
+
+/* ============================================================
+   表格 / 列表：白底、浅蓝灰表头、舒展行高、柔和选中
+   ============================================================ */
+QTableWidget, QListWidget {
+    border: 1px solid #E5EAF2;
+    border-radius: 12px;
+    background: #FFFFFF;
+    alternate-background-color: #F8FAFD;
+    gridline-color: #EBF0F7;
+    selection-background-color: #EAF1FB;
+    selection-color: #0F172A;
+    outline: 0;
+}
+
+QHeaderView::section {
+    min-height: 32px;
+    padding: 10px 12px;
+    color: #475569;
+    background: #F1F5FB;
+    border: none;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+QHeaderView::section:first { border-top-left-radius: 12px; }
+QHeaderView::section:last  { border-top-right-radius: 12px; }
+
+QTableWidget::item {
+    padding: 10px 10px;
+    font-size: 13px;
+}
+
+QTableWidget::item:selected {
+    color: #0F172A;
+    background: #EAF1FB;
+}
+
+QTableCornerButton::section {
+    background: #F1F5FB;
+    border: none;
+}
+
+/* 列表项：胶囊化、留白、柔和选中 */
+QListWidget::item {
+    min-height: 42px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    margin: 4px;
+    font-size: 13px;
+}
+
+QListWidget::item:hover {
+    background: #F1F6FF;
+}
+
+QListWidget::item:selected {
+    color: #1D4ED8;
+    background: #E8F1FF;
+}
+
+/* 考试卡片列表 / 待批阅队列：稍高的行 */
+QListWidget#examCardList::item, QListWidget#submissionQueueList::item {
+    min-height: 52px;
+    border: 1px solid transparent;
+}
+
+QListWidget#examCardList::item:selected,
+QListWidget#submissionQueueList::item:selected {
+    border: 1px solid #BFD6FB;
+    background: #E8F1FF;
+    color: #1D4ED8;
+}
+
+/* ============================================================
+   分组框 / 题目卡片
+   ============================================================ */
+QGroupBox, QGroupBox#questionBox,
+QFrame#paperQuestion, QFrame#gradingQuestionCard {
+    border: 1px solid #E5EAF2;
+    border-radius: 12px;
+    margin-top: 12px;
+    padding: 14px;
+    background: #FFFFFF;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0 8px;
+    color: #1D4ED8;
+    background: #FFFFFF;
+    font-weight: 800;
+}
+
+QLabel#questionContent, QLabel#paperQuestionTitle, QLabel#gradingQuestionTitle {
+    color: #1F2937;
+    font-size: 15px;
+    font-weight: 700;
+    background: transparent;
+}
+
+/* ============================================================
+   学生答题：选项、答题卡、倒计时、监考、风险
+   ============================================================ */
+QScrollArea#questionScroll, QScrollArea#gradingQuestionScroll,
+QScrollArea#answerSheetScroll {
+    border: none;
+    background: transparent;
+}
+
+/* 选项：大留白、可点区域明显、选中蓝 */
+QLabel#optionText {
+    border: 1px solid #E5EAF2;
+    border-radius: 10px;
+    padding: 11px 12px;
+    color: #334155;
+    background: #F8FAFD;
+}
+
+QRadioButton#choiceButton, QCheckBox#choiceButton {
+    min-height: 42px;
+    spacing: 10px;
+    padding: 10px 12px;
+    color: #1F2937;
+    background: #F8FAFD;
+    border: 1px solid #E5EAF2;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+QRadioButton#choiceButton:hover, QCheckBox#choiceButton:hover {
+    border-color: #93C5FD;
+    background: #EFF6FF;
+}
+
+QRadioButton#choiceButton:checked, QCheckBox#choiceButton:checked {
+    color: #1E3A8A;
+    border-color: #2563EB;
+    background: #DCE9FF;
+    font-weight: 800;
+}
+
+/* 答题卡：题号按钮为圆角胶囊；未答浅灰、已答蓝绿、当前题描边 */
+QWidget#answerSheet {
+    background: transparent;
+}
+
+QPushButton#answerNavButton {
+    min-width: 38px;
+    max-width: 38px;
+    min-height: 34px;
+    max-height: 34px;
+    padding: 0;
+    border-radius: 17px;
+    color: #475569;
+    border: 1px solid #D6DEE8;
+    background: #F4F6F9;
+    font-weight: 700;
+}
+
+QPushButton#answerNavButton:hover {
+    background: #E9EFF7;
+}
+
+QPushButton#answerNavButton[answerState="answered"] {
+    color: #0F766E;
+    border-color: #9BD9C6;
+    background: #DEF3EC;
+}
+
+QPushButton#answerNavButton[current="true"] {
+    color: #1D4ED8;
+    border: 2px solid #2563EB;
+    font-weight: 800;
+}
+
+/* 倒计时 / 锁定 / 得分徽章 */
+QLabel#countdownBadge, QLabel#scoreBadge, QLabel#lockBadge {
+    border-radius: 10px;
+    padding: 9px 13px;
+    color: #1E3A8A;
+    border: 1px solid #BFD6FB;
+    background: #EAF1FE;
+    font-weight: 800;
+}
+
+QLabel#countdownBadge {
+    font-size: 18px;
+}
+
+QLabel#countdownBadge[urgent="true"] {
+    color: #B91C1C;
+    border-color: #F4A6AC;
+    background: #FFE9EB;
+}
+
+/* 监考 / 批阅 / 学生操作面板：浅蓝信息底 */
+QFrame#riskPanel, QFrame#reviewActionPanel, QFrame#studentActionPanel {
+    border: 1px solid #CFE0F8;
+    border-radius: 12px;
+    background: #EFF6FF;
+}
+
+QLabel#riskStatusLabel, QLabel#riskLevelLabel,
+QLabel#aiProctorStatusLabel, QLabel#reviewTip {
+    color: #1E3A8A;
+    font-weight: 700;
+    background: transparent;
+}
+
+QLabel#aiProctorStatusLabel[state="warning"] {
+    color: #B45309;
+}
+
+QLabel#aiProctorStatusLabel[state="error"] {
+    color: #DC2626;
+}
+
+/* 监考预览框：深底，居中提示文字 */
+QLabel#proctorPreview, QLabel#facePreview {
+    border: 1px solid #CFD8E3;
+    border-radius: 12px;
+    background: #0F172A;
+    color: #AAB6C6;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   教师批阅：评分面板、答案对照、得分输入
+   ============================================================ */
+QTextEdit#studentAnswerViewer, QTextEdit#gradeCommentEdit, QTextEdit#answerEdit {
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #1F2937;
+}
+
+QTextEdit#referenceAnswerViewer {
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    background: #F0FDF4;
+    color: #14532D;
+}
+
+QLineEdit#gradeScoreEdit {
+    max-width: 110px;
+    color: #1E3A8A;
+    border: 1px solid #BFD6FB;
+    background: #EAF1FE;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+QLineEdit#gradeScoreEdit[invalid="true"] {
+    color: #B91C1C;
+    border-color: #F43F5E;
+    background: #FFF1F2;
+}
+
+/* ============================================================
+   轻提示 toast / 状态栏
+   ============================================================ */
+QLabel#toastSuccess, QLabel#toastError {
+    border-radius: 9px;
+    padding: 0 8px;
+    font-weight: 700;
+}
+
+QLabel#toastSuccess {
+    color: #166534;
+    border: 1px solid #BBF7D0;
+    background: #F0FDF4;
+}
+
+QLabel#toastError {
+    color: #B91C1C;
+    border: 1px solid #FBC9CD;
+    background: #FFF1F2;
+}
+
+QStatusBar {
+    color: #64748B;
+    background: #FFFFFF;
+    border-top: 1px solid #E5EAF2;
+}
+
+/* ============================================================
+   滚动条：细、圆、低存在感
+   ============================================================ */
+QScrollBar:vertical {
+    width: 10px;
+    background: transparent;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical {
+    min-height: 32px;
+    border-radius: 5px;
+    background: #CBD5E1;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #94A3B8;
+}
+
+QScrollBar:horizontal {
+    height: 10px;
+    background: transparent;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal {
+    min-width: 32px;
+    border-radius: 5px;
+    background: #CBD5E1;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #94A3B8;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line,
+QScrollBar::add-page, QScrollBar::sub-page {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+/* ============================================================
+   菜单 / 提示气泡 / 消息框：统一蓝白观感
+   ============================================================ */
+QMenuBar {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5EAF2;
+}
+
+QMenuBar::item {
+    padding: 6px 12px;
+    background: transparent;
+}
+
+QMenuBar::item:selected {
+    color: #1D4ED8;
+    background: #EAF1FE;
+}
+
+QMenu {
+    border: 1px solid #E5EAF2;
+    border-radius: 10px;
+    background: #FFFFFF;
+    padding: 6px;
+}
+
+QMenu::item {
+    padding: 8px 28px 8px 12px;
+    border-radius: 7px;
+}
+
+QMenu::item:selected {
+    color: #1D4ED8;
+    background: #EAF1FE;
+}
+
+QToolTip {
+    color: #FFFFFF;
+    background: #1F2937;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    padding: 6px 9px;
+}
+
+QMessageBox {
+    background: #F5F7FB;
+}
+
+QMessageBox QLabel {
+    background: transparent;
+    color: #1F2937;
+}
